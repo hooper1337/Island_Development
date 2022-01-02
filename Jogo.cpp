@@ -324,21 +324,97 @@ void Jogo::anoitecer()
         {
             if(i->getIlha()[j][x].verificaEdificio())
             {
-                if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnF")
+                if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnF" || i->getIlha()[j][x].getEdificio()->getTipo() == "mnC")
                 {
                     if(i->getIlha()[j][x].getEdificio()->getEstado() == "Ligado")
                     {
                         if(i->getIlha()[j][x].encontraMineiro())
                         {
                             if(i->getIlha()[j][x].getEdificio()->getNivel() == 1)
+                            {
                                 if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 100)
                                 {
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnF")
+                                    {
                                     ferro = ferro + i->getIlha()[j][x].getEdificio()->getProdutividade();
                                     i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnC")
+                                    {
+                                        carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
                                 }
+                            }
+                            else if(i->getIlha()[j][x].getEdificio()->getNivel() == 2)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 110)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnF")
+                                    {
+                                        ferro = ferro + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnC")
+                                    {
+                                        carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                }
+                            }
+                            else if(i->getIlha()[j][x].getEdificio()->getNivel() == 3)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 120)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnF")
+                                    {
+                                        ferro = ferro + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnC")
+                                    {
+                                        carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                }
+                            }
+                            else if(i->getIlha()[j][x].getEdificio()->getNivel() == 4)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 130)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnF")
+                                    {
+                                        ferro = ferro + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnC")
+                                    {
+                                        carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                }
+                            }
+                            else if(i->getIlha()[j][x].getEdificio()->getNivel() == 5)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 140)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnF")
+                                    {
+                                        ferro = ferro + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                    if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnC")
+                                    {
+                                        carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
         }
+    cout << ferro << endl;
+    cout << carvao;
 }

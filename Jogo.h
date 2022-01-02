@@ -9,7 +9,7 @@ class Jogo{
     Ilha *i;
     int dias;
     double dinheiro;
-    double ferro;
+    float ferro;
     int barraDeAco;
     int carvao;
     int madeira;
@@ -17,7 +17,7 @@ class Jogo{
     int eletricidade;
 public:
     Ilha* getIlha() const{return i;}
-    double getQuantidadeFerro() const{return ferro;}
+    float getQuantidadeFerro() const{return ferro;}
     int getQuantidadeBarraDeAco() const{return barraDeAco;}
     int getQuantidadeCarvao() const{return carvao;}
     int getQuantidadeMadeira() const{return madeira;}

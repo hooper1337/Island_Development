@@ -85,6 +85,7 @@ void mostraComandos(){
     cout << "cons <tipo> <linha> <coluna>\n";
     cout << "liga <linha> <coluna>\n";
     cout << "des <linha> <coluna>\n";
+    cout << "levup <linha> <coluna>\n";
     cout << "move <id> <linha> <coluna>\n";
     cout << "vende <tipo> <quanto>\n";
     cout << "cont <tipo>\n";
@@ -349,6 +350,27 @@ void validaComando(Jogo &jogo, istringstream &recebe)
         }
         else
             cout << "\nEssa zona não pertence à ilha!\n";
+    }
+    else if(com == "levup")
+    {
+        recebe >> linha >> coluna;
+        if(recebe.fail())
+            cout << "Não introduziu números!\n";
+        else if(verificaLinhaColuna(jogo,linha,coluna))
+        {
+            if(jogo.temEdificio(linha,coluna))
+            {
+                if(jogo.getIlha()->getIlha()[linha][coluna].getEdificio()->aumentaNivel())
+                    cout << "\nNível aumentado!\n";
+                else
+                    cout << "\nEsse edificio já se encontra ao nivel máximo!\n";
+            }
+            else
+                cout << "\nNão existe nenhum edificio nessa zona!\n";
+        }
+        else
+            cout << "\nEssa zona não pertence à ilha!\n";
+
     }
     else if(com == "move")
     {
