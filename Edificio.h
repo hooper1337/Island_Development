@@ -23,6 +23,7 @@ public:
     bool desligaEdificio();
     virtual bool aumentaNivel()=0;
     virtual void diminuiProdutividade()=0;
+    void aumentaArmazenamento();
 };
 
 class MinaFerro : public Edificio{

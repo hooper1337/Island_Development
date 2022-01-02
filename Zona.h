@@ -26,6 +26,7 @@ public:
     bool verificaEdificio();
     void listaTrabalhadores();
     bool encontraMineiro();
+    bool encontraOperario();
     Trabalhador* encontraTrabalhador(string id);
     int contaLenhadores();
     int contaTrabalhadores();

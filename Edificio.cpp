@@ -83,3 +83,7 @@ bool Edificio::desligaEdificio()
         return true;
     }
 }
+
+void Edificio::aumentaArmazenamento() {
+    armazenamento = armazenamento + produtividade;
+}
