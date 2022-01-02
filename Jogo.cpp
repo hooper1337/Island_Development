@@ -313,3 +313,32 @@ void Jogo::amanhecer()
                         i->getIlha()[j][x].limpaTrabalhadores();
                     }
 }
+
+void Jogo::anoitecer()
+{
+    int l = i->getLinhas();
+    int c = i->getColunas();
+
+    for(int j=0; j < l; j++)
+        for(int x=0; x < c; x++)
+        {
+            if(i->getIlha()[j][x].verificaEdificio())
+            {
+                if(i->getIlha()[j][x].getEdificio()->getTipo() == "mnF")
+                {
+                    if(i->getIlha()[j][x].getEdificio()->getEstado() == "Ligado")
+                    {
+                        if(i->getIlha()[j][x].encontraMineiro())
+                        {
+                            if(i->getIlha()[j][x].getEdificio()->getNivel() == 1)
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 100)
+                                {
+                                    ferro = ferro + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                    i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                }
+                        }
+                    }
+                }
+            }
+        }
+}

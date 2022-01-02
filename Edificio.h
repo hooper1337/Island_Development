@@ -17,7 +17,7 @@ public:
     int getProdutividade() const {return produtividade;}
     int getNivel() const{return nivel;}
     int getArmazenamento() const{return armazenamento;}
-    Edificio(string t,int pro=0, string e="Desligado", int n=1, int arma=0): tipo(t),produtividade(pro), estado(e){}
+    Edificio(string t,int pro=0, string e="Desligado", int n=1, int arma=0): tipo(t),produtividade(pro), estado(e), nivel(n), armazenamento(arma){}
     virtual ~Edificio()=default;
     bool ligaEdificio();
     bool desligaEdificio();

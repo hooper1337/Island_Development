@@ -36,6 +36,7 @@ public:
     int getTotalTrabalhadores(){return i->getTotalTrabalhadores();}
     bool temEdificio(int l, int c);
     void amanhecer();
+    void anoitecer();
     void incrementaDias(){dias++;}
 };
 

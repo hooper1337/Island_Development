@@ -372,6 +372,7 @@ void validaComando(Jogo &jogo, istringstream &recebe)
     }
     else if(com == "next")
     {
+        jogo.anoitecer();
         jogo.incrementaDias();
         jogo.amanhecer();
     }
