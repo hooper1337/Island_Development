@@ -91,7 +91,7 @@ void mostraComandos(){
     cout << "cont <tipo>\n";
     cout << "list <linha> <coluna>\n";
     cout << "vende <linha> <coluna>\n";
-    cout << "next (em desenvolvimento)\n";
+    cout << "next\n";
     cout << "save <nome> (em desenvolvimento)\n";
     cout << "load <nome> (em desenvolvimento)\n";
     cout << "apaga <nome> (em desenvolvimento)\n";
