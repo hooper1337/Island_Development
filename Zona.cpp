@@ -127,16 +127,18 @@ bool Zona::verificaEdificio() {
         return false;
 }
 
-Trabalhador* Zona::encontraTrabalhador(string id) {
-    for(int i=0; i<trabalhadores.size(); i++){
-        if(trabalhadores[i]->getId() == id){
+Trabalhador* Zona::encontraTrabalhador(string id)
+{
+    for(int i=0; i<trabalhadores.size(); i++)
+    {
+        if(trabalhadores[i]->getId() == id)
             return trabalhadores[i];
-        }
     }
     return nullptr;
 }
 
-void Zona::removeTrabalhador(Trabalhador *t) {
+void Zona::removeTrabalhador(Trabalhador *t)
+{
         for(int i=0; i<trabalhadores.size(); i++)
             if(trabalhadores[i]->getId() == t->getId())
             {

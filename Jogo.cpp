@@ -284,7 +284,11 @@ void Jogo::amanhecer()
     for(int j=0; j < l; j++)
         for(int x=0; x < c; x++)
             if(i->getIlha()[j][x].getTipoZona()->getTipo() == "flr")
+            {
                 lenhadores = i->getIlha()[j][x].contaLenhadores();
+                for(int k=0; k<lenhadores; k++)
+                    i->getIlha()[j][x].getTipoZona()->tiraArvores();
+            }
             conta = conta + lenhadores;
 
     madeira = madeira + conta;

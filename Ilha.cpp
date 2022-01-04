@@ -98,7 +98,8 @@ int Ilha::moveTrabalhador(string id, int l, int c) {
         for(int j=0; j<COLUNAS; j++)
         {
             t = ilha[i][j].encontraTrabalhador(id);
-            if(t != nullptr){
+            if(t != nullptr)
+            {
                 t->atribuiProbabilidade();
                 if(ilha[l][c].getTipoZona()->getTipo() == "mnt")
                     t->aumentaProbabilidade();
