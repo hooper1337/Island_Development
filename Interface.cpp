@@ -107,11 +107,10 @@ void mostraIlha(Jogo &jogo){
 ██║███████╗██║  ██║██║  ██║
 ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
     )" << '\n';
-    cout << "\n";
     int linhas = jogo.getIlha()->getLinhas();
     int colunas = jogo.getIlha()->getColunas();
 
-    cout << "\nDias: " << jogo.getDias();
+    cout << "\nDia: " << jogo.getDias();
     cout << "\nDinheiro: " << jogo.getDinheiro();
     cout << "\nTotal de Trabalhadores: " << jogo.getTotalTrabalhadores() << endl << endl;
 
@@ -187,25 +186,25 @@ void mostraIlha(Jogo &jogo){
 
 void list(Jogo &jogo, int l, int c)
 {
-    cout  << "*_______*\n";
-    cout << "|" << jogo.getNomeZona(l,c) << "\t|\n";
+    cout  << "┌───────┐\n";
+    cout << "│" << jogo.getNomeZona(l,c) << "\t│\n";
     if(!jogo.temEdificio(l,c))
-        cout << "|" << jogo.getNomeEdificio(l,c) << "\t\t|\n";
+        cout << "│\t\t│\n";
     else
-        cout << "|" << jogo.getNomeEdificio(l,c) << "\t|\n";
+        cout << "|" << jogo.getNomeEdificio(l,c) << "\t│\n";;
     if(jogo.getTotalTrabalhadoresZona(l,c)<3)
     {
-        cout << "|"; jogo.getTrabalhadoresZona(l,c);
-        cout << "\t\t|\n";
+        cout << "│"; jogo.getTrabalhadoresZona(l,c);
+        cout << "\t\t│\n";
     }
     else
     {
-        cout << "|";
+        cout << "│";
         jogo.getTrabalhadoresZona(l,c);
-        cout << "\t|\n";
+        cout << "\t│\n";
     }
-    cout << "|" << jogo.getTotalTrabalhadoresZona(l,c) << "\t\t|\n";
-    cout  << "*_______*\n";
+    cout << "│" << jogo.getTotalTrabalhadoresZona(l,c) << "\t\t│\n";
+    cout  << "└───────┘\n";
 }
 
 bool verificaLinhaColuna(Jogo &jogo, int l, int c)
