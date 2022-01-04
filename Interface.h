@@ -14,6 +14,7 @@ void mostraIlha(Jogo &jogo);
 void list(Jogo &jogo, int l, int c);
 bool verificaLinhaColuna(Jogo &jogo, int l, int c);
 void validaComando(Jogo &jogo, istringstream &recebe);
+void mostraRecursos(Jogo &jogo);
 bool leFicheiro(Jogo &jogo, string ficheiro);
 
 

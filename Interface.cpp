@@ -395,6 +395,7 @@ void validaComando(Jogo &jogo, istringstream &recebe)
     else if(com == "next")
     {
         jogo.anoitecer();
+        mostraRecursos(jogo);
         jogo.incrementaDias();
         jogo.amanhecer();
     }
@@ -419,4 +420,15 @@ bool leFicheiro(Jogo &jogo, string ficheiro){
     }
     readData.close();
     return true;
+}
+
+void mostraRecursos(Jogo &jogo)
+{
+    cout << "Recursos: \n";
+    cout << endl << "Ferro: " << jogo.getQuantidadeFerro() << endl;
+    cout << "Barra de Aço: " << jogo.getQuantidadeBarraDeAco() << endl;
+    cout << "Carvão: " << jogo.getQuantidadeCarvao() << endl;
+    cout << "Madeira: " <<jogo.getQuantidadeMadeira() << endl;
+    cout << "Vigas de Madeira: " << jogo.getQuantidadeVigasDeMadeira() << endl;
+    cout << "Eletricidade: " << jogo.getQuantidadeEletricidade() << endl;
 }

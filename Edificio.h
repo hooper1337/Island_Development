@@ -42,14 +42,14 @@ public:
 
 class CentralEletrica : public Edificio{
 public:
-    CentralEletrica(string tipo) : Edificio(tipo){}
+    CentralEletrica(string tipo) : Edificio(tipo,1){}
     bool aumentaNivel() override;
     void diminuiProdutividade() override;
 };
 
 class Bateria : public Edificio{
 public:
-    Bateria(string tipo) : Edificio(tipo){}
+    Bateria(string tipo) : Edificio(tipo,1){}
     bool aumentaNivel() override;
     void diminuiProdutividade() override;
 };

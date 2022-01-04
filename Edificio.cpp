@@ -33,18 +33,17 @@ bool MinaCarvao::aumentaNivel() {
     }
 }
 
-bool Bateria::aumentaNivel() {
+bool Bateria::aumentaNivel() {}
+
+bool CentralEletrica::aumentaNivel() {
     if(nivel == 5)
         return false;
-    else{
+    else
+    {
         nivel++;
+        produtividade++;
         armazenamento=armazenamento+10;
-        return true;
     }
-}
-
-bool  CentralEletrica::aumentaNivel() {
-    return false;
 }
 
 bool Fundicao::aumentaNivel() {

@@ -423,6 +423,167 @@ void Jogo::anoitecer()
                         }
                     }
                 }
+                else if(i->getIlha()[j][x].getEdificio()->getTipo() == "elec")
+                {
+                    if(i->getIlha()[j][x+1].getEdificio()->getTipo() == "bat")
+                    {
+                        if(i->getIlha()[j][x].getEdificio()->getEstado() == "Ligado" && i->getIlha()[j][x+1].getEdificio()->getEstado() == "Ligado")
+                        {
+                            if(i->getIlha()[j][x].encontraOperario())
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getNivel() == 1)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 100 && i->getIlha()[j][x+1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 1)
+                                        {
+                                            madeira = madeira - 1;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x+1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                                else if(i->getIlha()[j][x].getEdificio()->getNivel() == 2)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 110 && i->getIlha()[j][x+1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 2)
+                                        {
+                                            madeira = madeira - 2;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x+1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                                else if(i->getIlha()[j][x].getEdificio()->getNivel() == 3)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 120 && i->getIlha()[j][x+1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 3)
+                                        {
+                                            madeira = madeira - 3;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x+1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                                else if(i->getIlha()[j][x].getEdificio()->getNivel() == 4)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 130 && i->getIlha()[j][x+1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 4)
+                                        {
+                                            madeira = madeira - 4;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x+1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                                else if(i->getIlha()[j][x].getEdificio()->getNivel() == 5)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 140 && i->getIlha()[j][x+1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 5)
+                                        {
+                                            madeira = madeira - 5;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x+1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if(i->getIlha()[j][x-1].getEdificio()->getTipo() == "bat")
+                    {
+                        if(i->getIlha()[j][x].getEdificio()->getEstado() == "Ligado" && i->getIlha()[j][x-1].getEdificio()->getEstado() == "Ligado")
+                        {
+                            if(i->getIlha()[j][x].encontraOperario())
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getNivel() == 1)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 100 && i->getIlha()[j][x-1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 1)
+                                        {
+                                            madeira = madeira - 1;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x-1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                                else if(i->getIlha()[j][x].getEdificio()->getNivel() == 2)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 110 && i->getIlha()[j][x-1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 2)
+                                        {
+                                            madeira = madeira - 2;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x-1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                                else if(i->getIlha()[j][x].getEdificio()->getNivel() == 3)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 120 && i->getIlha()[j][x-1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 3)
+                                        {
+                                            madeira = madeira - 3;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x-1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                                else if(i->getIlha()[j][x].getEdificio()->getNivel() == 4)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 130 && i->getIlha()[j][x-1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 4)
+                                        {
+                                            madeira = madeira - 4;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x-1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                                else if(i->getIlha()[j][x].getEdificio()->getNivel() == 5)
+                                {
+                                    if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 140 && i->getIlha()[j][x-1].getEdificio()->getArmazenamento() < 100)
+                                    {
+                                        if(madeira > 5)
+                                        {
+                                            madeira = madeira - 5;
+                                            carvao = carvao + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x].getEdificio()->aumentaArmazenamento();
+                                            eletricidade = eletricidade + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                            i->getIlha()[j][x-1].getEdificio()->aumentaArmazenamento();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 }
