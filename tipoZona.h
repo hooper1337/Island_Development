@@ -13,8 +13,6 @@ public:
     tipoZona(string t): tipo(t){}
     virtual int adicionaArvores()=0;
     virtual void tiraArvores()=0;
-    virtual void incrementeDCE()=0;
-    virtual int getDCE()=0;
 };
 
 class Deserto : public tipoZona{
@@ -22,8 +20,6 @@ public:
     Deserto() : tipoZona("dsr"){}
     int adicionaArvores()override {return -1;}
     void tiraArvores() override{}
-    void incrementeDCE() override{}
-    int getDCE() override{}
 };
 
 class Pastagem : public tipoZona{
@@ -31,8 +27,6 @@ public:
     Pastagem() : tipoZona("pas"){}
     int adicionaArvores()override {return -1;}
     void tiraArvores() override{}
-    void incrementeDCE() override{}
-    int getDCE() override{}
 };
 
 class Floresta : public tipoZona{
@@ -41,8 +35,6 @@ public:
     Floresta() : tipoZona("flr"){if((rand() % 100)<50) arvores=20; else arvores=40;}
     int adicionaArvores()override {if(arvores == 100) return 0; else{arvores++; return 1;}}
     void tiraArvores() override{arvores--;}
-    void incrementeDCE() override{}
-    int getDCE() override{}
 };
 
 class Montanha : public tipoZona{
@@ -50,17 +42,12 @@ public:
     Montanha() : tipoZona("mnt"){}
     int adicionaArvores()override {return 0;}
     void tiraArvores() override{}
-    void incrementeDCE() override{}
-    int getDCE() override{}
 };
 class Pantano : public tipoZona{
-    int dCE;
 public:
-    Pantano() :dCE(0), tipoZona("pnt"){}
-    int getDCE() override{return dCE;}
+    Pantano() : tipoZona("pnt"){}
     int adicionaArvores()override {return false;}
     void tiraArvores() override{}
-    void incrementeDCE() override{dCE++;}
 };
 
 class ZonaX : public tipoZona{
@@ -68,8 +55,6 @@ public:
     ZonaX() : tipoZona("znx"){}
     int adicionaArvores()override {return false;}
     void tiraArvores() override{}
-    void incrementeDCE() override{}
-    int getDCE() override{}
 };
 
 

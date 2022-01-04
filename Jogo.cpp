@@ -307,11 +307,17 @@ void Jogo::amanhecer()
         for(int j=0; j < l; j++)
             for(int x=0; x < c; x++)
                 if(i->getIlha()[j][x].getTipoZona()->getTipo() == "pnt")
-                    if(i->getIlha()[j][x].getTipoZona()->getDCE() == 10)
+                {
+                    if(dias % 10 == 0)
                     {
-                        i->getIlha()[j][x].libertaEdificio();
+                        if(i->getIlha()[j][x].verificaEdificio())
+                             i->getIlha()[j][x].libertaEdificio();
+                        conta = i->getIlha()[j][x].contaTrabalhadores();
+                        i->getIlha()[j][x].subtraiTotalTrabalhadores(conta);
+                        i->retiraTotalTrabalhadores(conta);
                         i->getIlha()[j][x].limpaTrabalhadores();
                     }
+                }
 }
 
 void Jogo::anoitecer()
@@ -415,6 +421,4 @@ void Jogo::anoitecer()
                 }
             }
         }
-    cout << ferro << endl;
-    cout << carvao;
 }

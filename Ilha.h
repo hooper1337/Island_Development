@@ -24,7 +24,7 @@ public:
     bool procuraZona(string ed, int l, int c);
     bool procuraPasto(string traba, int d);
     int moveTrabalhador(string id, int l, int c);
-    void alteraLinhasColunas(int l, int c){LINHAS=l; COLUNAS=c;}
+    void retiraTotalTrabalhadores(int conta){totalTrabalhadores = totalTrabalhadores - conta;}
     void cresceArvores();
     void diminuiArvores();
 };

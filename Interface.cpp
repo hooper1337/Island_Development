@@ -111,6 +111,7 @@ void mostraIlha(Jogo &jogo){
     int linhas = jogo.getIlha()->getLinhas();
     int colunas = jogo.getIlha()->getColunas();
 
+    cout << "\nDias: " << jogo.getDias();
     cout << "\nDinheiro: " << jogo.getDinheiro();
     cout << "\nTotal de Trabalhadores: " << jogo.getTotalTrabalhadores() << endl << endl;
 

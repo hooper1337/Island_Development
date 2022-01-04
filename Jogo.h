@@ -21,6 +21,7 @@ public:
     int getQuantidadeBarraDeAco() const{return barraDeAco;}
     int getQuantidadeCarvao() const{return carvao;}
     int getQuantidadeMadeira() const{return madeira;}
+    int getDias() const{return dias;}
     double getDinheiro() const {return dinheiro;}
     int getQuantidadeVigasDeMadeira() const{return vigasDeMadeira;}
     int getQuantidadeEletricidade() const{return eletricidade;}
