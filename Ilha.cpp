@@ -122,7 +122,3 @@ int Ilha::moveTrabalhador(string id, int l, int c) {
         }
     return 0;
 }
-
-
-
-
