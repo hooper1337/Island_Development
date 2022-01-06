@@ -288,8 +288,8 @@ void Jogo::amanhecer()
                 lenhadores = i->getIlha()[j][x].contaLenhadores();
                 for(int k=0; k<lenhadores; k++)
                     i->getIlha()[j][x].getTipoZona()->tiraArvores();
+                conta = conta + lenhadores;
             }
-            conta = conta + lenhadores;
 
     madeira = madeira + conta;
 
@@ -300,12 +300,15 @@ void Jogo::amanhecer()
                 i->getIlha()[j][x].getTipoZona()->tiraArvores();
 
     // agora vamos retirar o ferro das montanhas
-    for(int j=0; j < l; j++)
-        for(int x=0; x < c; x++)
+    for(int j=0; j < l; j++){
+        for(int x=0; x < c; x++){
             if(i->getIlha()[j][x].getTipoZona()->getTipo() == "mnt")
+            {
                 trabalhadores = i->getIlha()[j][x].contaTrabalhadores();
-            conta = conta + trabalhadores;
-
+                conta = conta + trabalhadores;
+            }
+        }
+    }
     ferro = ferro + (conta*0.1);
 
         for(int j=0; j < l; j++)

@@ -160,7 +160,7 @@ void Zona::libertaEdificio() {
 }
 
 int Zona::contaLenhadores() {
-    int conta;
+    int conta=0;
     for(int i=0; i<trabalhadores.size(); i++)
         if(trabalhadores[i]->getTipo() == "L")
             conta++;
@@ -190,12 +190,13 @@ bool Zona::encontraMineiro() {
 
 bool Zona::encontraOperario() {
     for(int i=0; i<trabalhadores.size();  i++)
+    {
         if(trabalhadores[i]->getTipo() == "O")
             return true;
         else
             return false;
-
-        return false;
+    }
+    return false;
 }
 
 bool Zona::despedeTrabalhador() {
