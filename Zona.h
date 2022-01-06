@@ -38,6 +38,7 @@ public:
     bool despedeTrabalhador();
     void libertaEdificio();
     void limpaTrabalhadores();
+    void podemMover();
 };
 
 

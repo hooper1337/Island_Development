@@ -100,16 +100,24 @@ int Ilha::moveTrabalhador(string id, int l, int c) {
             t = ilha[i][j].encontraTrabalhador(id);
             if(t != nullptr)
             {
-                if(ilha[l][c].getTipoZona()->getTipo() == "mnt")
-                    t->aumentaProbabilidade();
-                if(ilha[l][c].adicionaTrabalhador(t)){
-                ilha[l][c].aumentaTotalTrabalhadores();
-                ilha[i][j].removeTrabalhador(t);
-                ilha[i][j].diminuiTotalTrabalhadores();
-                return 1;
+                if(t->getContraolaI() == 0)
+                {
+                    t->naoPodeMover();
+                    if(ilha[l][c].getTipoZona()->getTipo() == "mnt")
+                        t->aumentaProbabilidade();
+                    if(ilha[l][c].adicionaTrabalhador(t))
+                    {
+                        ilha[l][c].aumentaTotalTrabalhadores();
+                        ilha[i][j].removeTrabalhador(t);
+                        ilha[i][j].diminuiTotalTrabalhadores();
+                        return 1;
+                    }
+                    else
+                        return -1;
                 }
                 else
-                    return -1;
+                    return -2;
+
             }
         }
     return 0;

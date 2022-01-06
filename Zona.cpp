@@ -136,6 +136,10 @@ Trabalhador* Zona::encontraTrabalhador(string id)
     }
     return nullptr;
 }
+void Zona::podemMover() {
+    for(int i=0; i<trabalhadores.size(); i++)
+        trabalhadores[i]->podeMover();
+}
 
 void Zona::removeTrabalhador(Trabalhador *t)
 {

@@ -273,6 +273,10 @@ void Jogo::amanhecer()
     int trabalhadores;
     int conta=0;
 
+    for(int j=0; j<l; j++)
+        for(int x=0; x<c; x++)
+            i->getIlha()[j][x].podemMover();
+
     // vejo se passaram dois dias e caso tenham passado adiciono arvores na floresta
     if(dias % 2 == 0)
         for(int j=0; j < l; j++)
@@ -785,6 +789,7 @@ void Jogo::anoitecer()
         for(int m=0; m<c; m++)
             if(i->getIlha()[o][m].despedeTrabalhador())
                 i->decrementaTotalTrabalhadores();
+
     for(int o=0; o<l; o++)
         for(int m=0; m<c; m++)
             if(i->getIlha()[o][m].verificaEdificio())

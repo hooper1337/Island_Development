@@ -403,6 +403,8 @@ void validaComando(Jogo &jogo, istringstream &recebe)
                     cout << "\nTrabalhador movido para a linha [" << linha << "] e coluna [" << coluna << "]!\n";
                 else if(jogo.getIlha()->moveTrabalhador(id,linha,coluna)==0)
                     cout << "\nTrabalhador não encontrado!\n";
+                else if(jogo.getIlha()->moveTrabalhador(id,linha,coluna)== -2 )
+                    cout << "\nJá moveu o trabalhador hoje!\n";
                 else
                     cout << "\nEsse trabalhador já está zona!\n";
             }
