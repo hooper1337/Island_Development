@@ -191,7 +191,7 @@ void list(Jogo &jogo, int l, int c)
     if(!jogo.temEdificio(l,c))
         cout << "│\t\t│\n";
     else
-        cout << "|" << jogo.getNomeEdificio(l,c) << "\t│\n";;
+        cout << "│" << jogo.getNomeEdificio(l,c) << "\t│\n";;
     if(jogo.getTotalTrabalhadoresZona(l,c)<3)
     {
         cout << "│"; jogo.getTrabalhadoresZona(l,c);
@@ -414,7 +414,8 @@ bool leFicheiro(Jogo &jogo, string ficheiro){
     if(!readData){
         return false;
     }
-    while(getline(readData, aux)){
+    while(getline(readData, aux))
+    {
         istringstream recebe(aux);
         validaComando(jogo, recebe);
     }
@@ -424,11 +425,14 @@ bool leFicheiro(Jogo &jogo, string ficheiro){
 
 void mostraRecursos(Jogo &jogo)
 {
-    cout << "Recursos: \n";
-    cout << endl << "Ferro: " << jogo.getQuantidadeFerro() << endl;
-    cout << "Barra de Aço: " << jogo.getQuantidadeBarraDeAco() << endl;
-    cout << "Carvão: " << jogo.getQuantidadeCarvao() << endl;
-    cout << "Madeira: " <<jogo.getQuantidadeMadeira() << endl;
-    cout << "Vigas de Madeira: " << jogo.getQuantidadeVigasDeMadeira() << endl;
-    cout << "Eletricidade: " << jogo.getQuantidadeEletricidade() << endl;
+    cout << endl;
+    cout << "┌─────────────────────┐";
+    cout << "\n│Recursos:            │\n│                     │";
+    cout << endl << "│" << "Ferro: " << jogo.getQuantidadeFerro() << "\t\t\t  │" << endl;
+    cout << "│" << "Barra de Aço: " << jogo.getQuantidadeBarraDeAco() << "\t  │" << endl;
+    cout << "│" <<"Carvão: " << jogo.getQuantidadeCarvao() << "\t\t  │" <<  endl;
+    cout << "│" << "Madeira: " <<jogo.getQuantidadeMadeira() << "\t\t  │" << endl;
+    cout << "│" << "Vigas de Madeira: " << jogo.getQuantidadeVigasDeMadeira() << "│" << endl;
+    cout << "│" <<"Eletricidade: " << jogo.getQuantidadeEletricidade() << "\t  │" << endl;
+    cout  << "└─────────────────────┘";
 }

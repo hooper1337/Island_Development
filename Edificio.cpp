@@ -10,7 +10,6 @@ bool MinaFerro::aumentaNivel() {
     else{
         nivel++;
         produtividade++;
-        armazenamento=armazenamento+10;
         return true;
     }
 }
@@ -28,7 +27,17 @@ bool MinaCarvao::aumentaNivel() {
     else{
         nivel++;
         produtividade++;
-        armazenamento=armazenamento+10;
+        return true;
+    }
+}
+
+bool Fundicao::aumentaNivel() {
+    if(nivel == 5)
+        return false;
+    else
+    {
+        nivel++;
+        produtividade++;
         return true;
     }
 }
@@ -42,13 +51,9 @@ bool CentralEletrica::aumentaNivel() {
     {
         nivel++;
         produtividade++;
-        armazenamento=armazenamento+10;
     }
 }
 
-bool Fundicao::aumentaNivel() {
-    return false;
-}
 
 bool Edificio::ligaEdificio()
 {
@@ -85,4 +90,8 @@ bool Edificio::desligaEdificio()
 
 void Edificio::aumentaArmazenamento() {
     armazenamento = armazenamento + produtividade;
+}
+
+void Edificio::diminuiArmazenamento() {
+    armazenamento = armazenamento - produtividade;
 }

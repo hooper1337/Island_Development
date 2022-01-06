@@ -24,6 +24,7 @@ public:
     virtual bool aumentaNivel()=0;
     virtual void diminuiProdutividade()=0;
     void aumentaArmazenamento();
+    void diminuiArmazenamento();
 };
 
 class MinaFerro : public Edificio{
@@ -56,7 +57,7 @@ public:
 
 class Fundicao : public Edificio{
 public:
-    Fundicao(string tipo) : Edificio(tipo){}
+    Fundicao(string tipo) : Edificio(tipo,1){}
     bool aumentaNivel() override;
     void diminuiProdutividade() override;
 };
