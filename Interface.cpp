@@ -223,6 +223,7 @@ void validaComando(Jogo &jogo, istringstream &recebe)
     string tipo;
     int linha;
     int coluna;
+    int quanto;
     string ficheiro;
     string id;
     string com;
@@ -328,6 +329,23 @@ void validaComando(Jogo &jogo, istringstream &recebe)
             cout << "\nEssa zona não pertence á ilha!\n";
         }
     }
+    else if(com == "venderec")
+    {
+        recebe >> tipo >> quanto;
+
+            if(jogo.vendeRecursos(tipo,quanto) == 1)
+            {
+                cout << "\nVendeu " << quanto << " unidades de " << tipo << "!" << endl;
+            }
+            else if(jogo.vendeRecursos(tipo,quanto) == 0)
+            {
+                cout << "\nNão tem essa quantidade de " << tipo << "!" << endl;
+            }
+            else
+            {
+                cout << "\nEsse recurso não existe!\n";
+            }
+    }
     else if(com == "des")
     {
         recebe >> linha >> coluna;
@@ -426,13 +444,11 @@ bool leFicheiro(Jogo &jogo, string ficheiro){
 void mostraRecursos(Jogo &jogo)
 {
     cout << endl;
-    cout << "┌─────────────────────┐";
-    cout << "\n│Recursos:            │\n│                     │";
-    cout << endl << "│" << "Ferro: " << jogo.getQuantidadeFerro() << "\t\t\t  │" << endl;
-    cout << "│" << "Barra de Aço: " << jogo.getQuantidadeBarraDeAco() << "\t  │" << endl;
-    cout << "│" <<"Carvão: " << jogo.getQuantidadeCarvao() << "\t\t  │" <<  endl;
-    cout << "│" << "Madeira: " <<jogo.getQuantidadeMadeira() << "\t\t  │" << endl;
-    cout << "│" << "Vigas de Madeira: " << jogo.getQuantidadeVigasDeMadeira() << "│" << endl;
-    cout << "│" <<"Eletricidade: " << jogo.getQuantidadeEletricidade() << "\t  │" << endl;
-    cout  << "└─────────────────────┘";
+    cout << "Recursos: \n";
+    cout << endl << "Ferro: " << jogo.getQuantidadeFerro() << endl;
+    cout << "Barra de Aço: " << jogo.getQuantidadeBarraDeAco()  << endl;
+    cout <<"Carvão: " << jogo.getQuantidadeCarvao() <<  endl;
+    cout << "Madeira: " <<jogo.getQuantidadeMadeira() << endl;
+    cout << "Vigas de Madeira: " << jogo.getQuantidadeVigasDeMadeira() << endl;
+    cout <<"Eletricidade: " << jogo.getQuantidadeEletricidade() << endl << endl;
 }

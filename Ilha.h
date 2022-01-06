@@ -25,6 +25,7 @@ public:
     bool procuraPasto(string traba, int d);
     int moveTrabalhador(string id, int l, int c);
     void retiraTotalTrabalhadores(int conta){totalTrabalhadores = totalTrabalhadores - conta;}
+    void decrementaTotalTrabalhadores(){totalTrabalhadores--;}
     void cresceArvores();
     void diminuiArvores();
 };

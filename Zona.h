@@ -35,6 +35,7 @@ public:
     void aumentaTotalTrabalhadores (){totalTrabalhadores++;}
     void diminuiTotalTrabalhadores(){totalTrabalhadores--;}
     void subtraiTotalTrabalhadores(int conta){totalTrabalhadores = totalTrabalhadores - conta;}
+    bool despedeTrabalhador();
     void libertaEdificio();
     void limpaTrabalhadores();
 };

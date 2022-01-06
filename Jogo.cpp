@@ -38,7 +38,7 @@ int Jogo::vendeRecursos(string tipo, int quanto) {
             return 1;
         }
     }
-    else if(tipo == "mad")
+    else if(tipo == "madeira")
     {
         if(quanto > madeira)
             return 0;
@@ -49,7 +49,7 @@ int Jogo::vendeRecursos(string tipo, int quanto) {
             return 1;
         }
     }
-    else if(tipo == "viga")
+    else if(tipo == "vigas")
     {
         if (quanto > vigasDeMadeira)
             return 0;
@@ -60,7 +60,7 @@ int Jogo::vendeRecursos(string tipo, int quanto) {
             return 1;
         }
     }
-    else if(tipo == "eletr")
+    else if(tipo == "eletricidade")
     {
         if (quanto > eletricidade)
             return 0;
@@ -778,4 +778,8 @@ void Jogo::anoitecer()
                 }
             }
         }
+    for(int o=0; o<l; o++)
+        for(int m=0; m<c; m++)
+            if(i->getIlha()[o][m].despedeTrabalhador())
+                i->decrementaTotalTrabalhadores();
 }

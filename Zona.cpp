@@ -87,21 +87,21 @@ bool Zona::alocaTrabalhador(string traba, string id)
     Trabalhador *t;
     if(traba == "oper")
     {
-        t = new Operario("O", id,20);
+        t = new Operario("O", id,20,5);
         trabalhadores.push_back(t);
         totalTrabalhadores++;
         return true;
     }
     else if(traba == "len")
     {
-        t = new Lenhador("L", id,10);
+        t = new Lenhador("L", id,10,0);
         trabalhadores.push_back(t);
         totalTrabalhadores++;
         return true;
     }
     else if(traba == "miner")
     {
-        t = new Mineiro("M", id,15);
+        t = new Mineiro("M", id,15,10);
         trabalhadores.push_back(t);
         totalTrabalhadores++;
         return true;
@@ -196,6 +196,22 @@ bool Zona::encontraOperario() {
             return false;
 
         return false;
+}
+
+bool Zona::despedeTrabalhador() {
+    for(int i=0; i < trabalhadores.size(); i++)
+    {
+        if(trabalhadores[i]->irEmbora())
+        {
+            delete trabalhadores[i];
+            trabalhadores.erase(trabalhadores.begin()+i);
+            diminuiTotalTrabalhadores();
+            return true;
+        }
+        else
+            return false;
+    }
+    return false;
 }
 
 

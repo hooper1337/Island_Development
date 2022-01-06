@@ -9,7 +9,6 @@ bool Mineiro::irEmbora() {
         return true;
     else
         false;
-    return false;
 }
 
 bool Operario::irEmbora() {
