@@ -21,29 +21,23 @@ public:
     virtual ~Trabalhador()=default;
     void incrementaDias();
     void aumentaProbabilidade();
-    virtual bool irEmbora()=0;
+    bool irEmbora();
     //virtual void atribuiProbabilidade()=0;
 };
 
 class Mineiro : public Trabalhador{
 public:
     Mineiro(string tipo, string id, int p, int pro) : Trabalhador(tipo,id,p,pro){};
-    bool irEmbora() override;
-    //void atribuiProbabilidade() override{probabilidade = 10;}
 };
 
 class Operario : public Trabalhador{
 public:
     Operario(string tipo, string id, int p, int pro) : Trabalhador(tipo,id,p,pro){};
-    bool irEmbora() override;
-    //void atribuiProbabilidade() override{probabilidade = 5;}
 };
 
 class Lenhador : public Trabalhador{
 public:
     Lenhador(string tipo, string id, int p, int pro) : Trabalhador(tipo,id,p,pro){};
-    bool irEmbora() override;
-    //void atribuiProbabilidade() override{probabilidade = 0;}
 };
 
 

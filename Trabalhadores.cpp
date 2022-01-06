@@ -4,30 +4,12 @@
 
 #include "Trabalhadores.h"
 
-bool Mineiro::irEmbora() {
-    if((rand() % 100)<probabilidade)
-        return true;
-    else
-        false;
-}
-
-bool Operario::irEmbora() {
+bool Trabalhador::irEmbora()
+{
     if((rand() % 100)<probabilidade)
         return true;
     else
         return false;
-}
-
-bool Lenhador::irEmbora() {
-    if(probabilidade == 0)
-        return false;
-    else
-    {
-        if((rand() % 100)<probabilidade)
-            return true;
-        else
-            return false;
-    }
 }
 void Trabalhador::aumentaProbabilidade() {
     probabilidade = probabilidade+5;

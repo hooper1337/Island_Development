@@ -42,7 +42,7 @@ bool Fundicao::aumentaNivel() {
     }
 }
 
-bool Bateria::aumentaNivel() {}
+bool Bateria::aumentaNivel() {return false;}
 
 bool CentralEletrica::aumentaNivel() {
     if(nivel == 5)
@@ -52,6 +52,7 @@ bool CentralEletrica::aumentaNivel() {
         nivel++;
         produtividade++;
     }
+    return false;
 }
 
 
@@ -94,4 +95,11 @@ void Edificio::aumentaArmazenamento() {
 
 void Edificio::diminuiArmazenamento() {
     armazenamento = armazenamento - produtividade;
+}
+
+bool Edificio::desabar() {
+    if((rand() % 100)<probabilidade)
+        return true;
+    else
+        return false;
 }
