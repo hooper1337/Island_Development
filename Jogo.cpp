@@ -611,7 +611,7 @@ void Jogo::anoitecer()
                         {
                             if(i->getIlha()[j][x+1].verificaEdificio() && i->getIlha()[j][x-1].verificaEdificio())
                             {
-                                if(i->getIlha()[j][x+1].getEdificio()->getTipo() == "mnF" && i->getIlha()[j][x-1].getEdificio()->getTipo() == "mnC")
+                                if(i->getIlha()[j][x+1].getEdificio()->getTipo() == "mnF" && (i->getIlha()[j][x+1].getEdificio()->getTipo() == "mnC" || i->getIlha()[j][x+1].getEdificio()->getTipo() == "elec"))
                                 {
                                     if(i->getIlha()[j][x].getEdificio()->getNivel() == 1)
                                     {
@@ -701,7 +701,7 @@ void Jogo::anoitecer()
                         {
                             if(i->getIlha()[j][x+1].verificaEdificio() && i->getIlha()[j][x-1].verificaEdificio())
                             {
-                                if(i->getIlha()[j][x+1].getEdificio()->getTipo() == "mnC" && i->getIlha()[j][x-1].getEdificio()->getTipo() == "mnF")
+                                if((i->getIlha()[j][x+1].getEdificio()->getTipo() == "mnC" || i->getIlha()[j][x+1].getEdificio()->getTipo() == "elec") && i->getIlha()[j][x-1].getEdificio()->getTipo() == "mnF")
                                 {
                                     if(i->getIlha()[j][x].getEdificio()->getNivel() == 1)
                                     {
