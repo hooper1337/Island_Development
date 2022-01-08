@@ -32,7 +32,7 @@ Zona::Zona() {
         tp = new Pantano;
         p++;
     }else if(z==0){
-        tp = new ZonaX;
+        tp = new Campo;
         z++;
     }
     else{
@@ -48,7 +48,7 @@ Zona::Zona() {
         else if (aux == 5)
             tp = new Pantano;
         else if (aux == 6)
-            tp = new ZonaX;
+            tp = new Campo;
     }
 }
 
@@ -77,6 +77,11 @@ bool Zona::alocaEdificio(string ed)
     else if(ed == "fund")
     {
         e = new Fundicao("fun");
+        return true;
+    }
+    else if(ed == "serr")
+    {
+        e = new Serraria("ser");
         return true;
     }
     return false;

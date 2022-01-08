@@ -24,6 +24,7 @@ public:
     bool desligaEdificio();
     virtual bool aumentaNivel()=0;
     virtual void diminuiProdutividade()=0;
+    void duplicaProdutividade(){produtividade = produtividade*2;}
     void aumentaArmazenamento();
     void diminuiArmazenamento();
     bool desabar();
@@ -47,21 +48,28 @@ class CentralEletrica : public Edificio{
 public:
     CentralEletrica(string tipo) : Edificio(tipo,1,10){}
     bool aumentaNivel() override;
-    void diminuiProdutividade() override;
+    void diminuiProdutividade() override{}
 };
 
 class Bateria : public Edificio{
 public:
     Bateria(string tipo) : Edificio(tipo,1,10){}
     bool aumentaNivel() override;
-    void diminuiProdutividade() override;
+    void diminuiProdutividade() override{}
 };
 
 class Fundicao : public Edificio{
 public:
     Fundicao(string tipo) : Edificio(tipo,1,10){}
     bool aumentaNivel() override;
-    void diminuiProdutividade() override;
+    void diminuiProdutividade() override{}
+};
+
+class Serraria : public Edificio{
+public:
+    Serraria(string tipo) : Edificio(tipo, 2, 10){}
+    bool aumentaNivel() override;
+    void diminuiProdutividade() override{}
 };
 
 

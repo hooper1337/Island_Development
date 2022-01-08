@@ -94,6 +94,12 @@ void Jogo::vendeEdificio(int l, int c) {
         i->getIlha()[l][c].libertaEdificio();
         dinheiro = dinheiro + 10;
     }
+    else if(aux == "ser")
+    {
+        i->getIlha()[l][c].libertaEdificio();
+        dinheiro = dinheiro + 50;
+    }
+
 }
 
 int Jogo::constroiEdificio(string ed, int l, int c) {
@@ -219,6 +225,21 @@ int Jogo::constroiEdificio(string ed, int l, int c) {
             else
                 return 0;
         }
+        else if(ed == "serr")
+        {
+            if(dinheiro > 50)
+            {
+                if(i->procuraZona(ed,l,c))
+                {
+                    dinheiro = dinheiro - 50;
+                    return 1;
+                }
+                else
+                    return -1;
+            }
+            else
+                return 0;
+        }
         else
             return -2;
 }
@@ -276,6 +297,12 @@ void Jogo::amanhecer()
     for(int j=0; j<l; j++)
         for(int x=0; x<c; x++)
             i->getIlha()[j][x].podemMover();
+
+    for(int j=0;j<l; j++)
+        for(int x=0; x<c; x++)
+            if(i->getIlha()[j][x].getTipoZona()->getTipo() == "cmp")
+                if(i->getIlha()[j][x].verificaEdificio())
+                    i->getIlha()[j][x].getEdificio()->duplicaProdutividade();
 
     // vejo se passaram dois dias e caso tenham passado adiciono arvores na floresta
     if(dias % 2 == 0)
@@ -783,12 +810,74 @@ void Jogo::anoitecer()
                         }
                     }
                 }
+                if(i->getIlha()[j][x].getEdificio()->getTipo() == "ser")
+                    if(i->getIlha()[j][x].encontraOperario())
+                    {
+                        if(i->getIlha()[j][x].getEdificio()->getEstado() == "Ligado")
+                        {
+                            if(i->getIlha()[j][x].getEdificio()->getNivel() == 1)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 100)
+                                {
+                                    if(madeira > 1)
+                                    {
+                                        vigasDeMadeira = vigasDeMadeira + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        madeira = madeira - 1;
+                                    }
+                                }
+                            }
+                            if(i->getIlha()[j][x].getEdificio()->getNivel() == 2)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 110)
+                                {
+                                    if(madeira > 1)
+                                    {
+                                        vigasDeMadeira = vigasDeMadeira + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        madeira = madeira - 1;
+                                    }
+                                }
+                            }
+                            if(i->getIlha()[j][x].getEdificio()->getNivel() == 3)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 120)
+                                {
+                                    if(madeira > 1)
+                                    {
+                                        vigasDeMadeira = vigasDeMadeira + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        madeira = madeira - 1;
+                                    }
+                                }
+                            }
+                            if(i->getIlha()[j][x].getEdificio()->getNivel() == 4)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 130)
+                                {
+                                    if(madeira > 1)
+                                    {
+                                        vigasDeMadeira = vigasDeMadeira + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        madeira = madeira - 1;
+                                    }
+                                }
+                            }
+                            if(i->getIlha()[j][x].getEdificio()->getNivel() == 5)
+                            {
+                                if(i->getIlha()[j][x].getEdificio()->getArmazenamento() < 140)
+                                {
+                                    if(madeira > 1)
+                                    {
+                                        vigasDeMadeira = vigasDeMadeira + i->getIlha()[j][x].getEdificio()->getProdutividade();
+                                        madeira = madeira - 1;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
             }
-        }
-    for(int o=0; o<l; o++)
-        for(int m=0; m<c; m++)
-            if(i->getIlha()[o][m].despedeTrabalhador())
+            if(i->getIlha()[j][x].despedeTrabalhador())
                 i->decrementaTotalTrabalhadores();
+        }
+
 
     for(int o=0; o<l; o++)
         for(int m=0; m<c; m++)

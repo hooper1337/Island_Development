@@ -42,6 +42,17 @@ bool Fundicao::aumentaNivel() {
     }
 }
 
+bool Serraria::aumentaNivel() {
+    if(nivel == 5)
+        return false;
+    else
+    {
+        nivel++;
+        produtividade++;
+        return true;
+    }
+}
+
 bool Bateria::aumentaNivel() {return false;}
 
 bool CentralEletrica::aumentaNivel() {
@@ -65,17 +76,6 @@ bool Edificio::ligaEdificio()
         estado = "Ligado";
         return true;
     }
-}
-void CentralEletrica::diminuiProdutividade() {
-    produtividade=0;
-}
-
-void Bateria::diminuiProdutividade() {
-    produtividade=0;
-}
-
-void Fundicao::diminuiProdutividade() {
-    produtividade=0;
 }
 
 bool Edificio::desligaEdificio()
