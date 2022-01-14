@@ -12,21 +12,20 @@ class Trabalhador{
     int precoContrat;
     int diasContrato;
     int controla;
+    int ativo;
 protected:
     int probabilidade;
 public:
     string getTipo() const{return tipo;}
     string getId() const {return id;}
     int getPrecoContrat() const{return precoContrat;}
+    int getDiasContrato() const{return  diasContrato;}
     int getContraolaI() const{return controla;}
     Trabalhador(string t, string i, int p,int pro,int c=0, int dC=0): tipo(t), precoContrat(p),probabilidade(pro),controla(c), diasContrato(dC), id(i){}
     virtual ~Trabalhador()=default;
     void incrementaDias();
     void aumentaProbabilidade();
     bool irEmbora();
-    void podeMover(){controla = 0;}
-    void naoPodeMover(){controla = 1;}
-    //virtual void atribuiProbabilidade()=0;
 };
 
 class Mineiro : public Trabalhador{

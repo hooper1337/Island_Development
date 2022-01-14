@@ -38,7 +38,7 @@ public:
     bool temEdificio(int l, int c);
     void amanhecer();
     void anoitecer();
-    void incrementaDias(){dias++;}
+    void incrementaDias(){dias++; for(int x=0; x<i->getLinhas(); i++)for(int j=0; j<i->getColunas(); j++)i->getIlha()[x][j].incrementaDiasContrato();}
 };
 
 #endif //TP_POO1_JOGO_H

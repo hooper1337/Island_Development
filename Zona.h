@@ -39,6 +39,7 @@ public:
     void libertaEdificio();
     void limpaTrabalhadores();
     void podemMover();
+    void incrementaDiasContrato();
 };
 
 
