@@ -98,8 +98,9 @@ void Edificio::diminuiArmazenamento() {
 }
 
 bool Edificio::desabar() {
-    if((rand() % 100)<probabilidade)
+    if((rand() % 100)<probabilidade) {
         return true;
+    }
     else
         return false;
 }

@@ -23,6 +23,8 @@ public:
     int getContraolaI() const{return controla;}
     Trabalhador(string t, string i, int p,int pro,int c=0, int dC=0): tipo(t), precoContrat(p),probabilidade(pro),controla(c), diasContrato(dC), id(i){}
     virtual ~Trabalhador()=default;
+    void naoPodeMover(){controla = 1;}
+    void podeMover(){controla = 0;}
     void incrementaDias();
     void aumentaProbabilidade();
     bool irEmbora();

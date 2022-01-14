@@ -18,14 +18,14 @@ public:
 class Deserto : public tipoZona{
 public:
     Deserto() : tipoZona("dsr"){}
-    int adicionaArvores()override {}
+    int adicionaArvores()override {return 0;}
     void tiraArvores() override{}
 };
 
 class Pastagem : public tipoZona{
 public:
     Pastagem() : tipoZona("pas"){}
-    int adicionaArvores()override {}
+    int adicionaArvores()override {return 0;}
     void tiraArvores() override{}
 };
 
@@ -40,20 +40,20 @@ public:
 class Montanha : public tipoZona{
 public:
     Montanha() : tipoZona("mnt"){}
-    int adicionaArvores()override {}
+    int adicionaArvores()override {return 0;}
     void tiraArvores() override{}
 };
 class Pantano : public tipoZona{
 public:
     Pantano() : tipoZona("pnt"){}
-    int adicionaArvores()override {}
+    int adicionaArvores()override {return 0;}
     void tiraArvores() override{}
 };
 
 class Campo : public tipoZona{
 public:
     Campo() : tipoZona("cmp"){}
-    int adicionaArvores()override {}
+    int adicionaArvores()override {return 0;}
     void tiraArvores() override{}
 };
 
