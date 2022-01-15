@@ -26,6 +26,7 @@ public:
     int getQuantidadeVigasDeMadeira() const{return vigasDeMadeira;}
     int getQuantidadeEletricidade() const{return eletricidade;}
     Jogo(Ilha *aux,int di=500, int d=1, int f=100, int b=100, int c=100, int m=100, int v=100, int el=100):i(aux),dinheiro(di), dias(d),ferro(f), barraDeAco(b), carvao(c), madeira(m), vigasDeMadeira(v), eletricidade(el){}
+    Jogo(const Jogo &aux, Ilha &ilha);
     int vendeRecursos(string tipo, int quanto);
     void vendeEdificio(int l, int c);
     int constroiEdificio(string ed, int l, int c);
@@ -40,5 +41,6 @@ public:
     void anoitecer();
     void incrementaDias(){dias++;}
 };
+
 
 #endif //TP_POO1_JOGO_H

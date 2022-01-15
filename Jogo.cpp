@@ -1037,8 +1037,6 @@ void Jogo::anoitecer()
     if(i->getIlha()[j][x].despedeTrabalhador())
         i->decrementaTotalTrabalhadores();
 }
-
-
     for(int o=0; o<l; o++)
         for(int m=0; m<c; m++)
             if(i->getIlha()[o][m].verificaEdificio())

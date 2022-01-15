@@ -227,6 +227,7 @@ void validaComando(Jogo &jogo, istringstream &recebe)
     string ficheiro;
     string id;
     string com;
+    string nomeJogo;
     recebe >> com;
 
     if(com == "cons")
@@ -254,7 +255,7 @@ void validaComando(Jogo &jogo, istringstream &recebe)
     else if(com == "exec")
     {
         recebe >> ficheiro;
-        if(leFicheiro(jogo,ficheiro))
+        if(leFicheiro(jogo, ficheiro))
             cout << "\nFicheiro lido com sucesso!\n";
         else
             cout << "\nErro ao abrir ficheiro!\n";
