@@ -1043,3 +1043,30 @@ void Jogo::anoitecer()
                 if(i->getIlha()[o][m].getEdificio()->desabar())
                     i->getIlha()[o][m].libertaEdificio();
 }
+
+Jogo::Jogo(const Jogo &aux, Ilha *aux1): i(aux1) {
+    this->nomeJogo = aux.nomeJogo;
+    this->dias = aux.dias;
+    this->dinheiro = aux.dinheiro;
+    this->ferro = aux.ferro;
+    this->barraDeAco = aux.barraDeAco;
+    this->carvao = aux.carvao;
+    this->madeira = aux.madeira;
+    this->vigasDeMadeira = aux.vigasDeMadeira;
+    this->eletricidade = aux.eletricidade;
+}
+
+void SaveLoad::adicionaJogo(Jogo *aux)
+{
+    jogosGuardados.push_back(aux);
+}
+
+bool SaveLoad::removeJogo(string nome)
+{
+    for(int i=0; i<jogosGuardados.size(); i++)
+        if(jogosGuardados[i]->getNomeJogo() == nome){
+            jogosGuardados.erase(jogosGuardados.begin()+i);
+            return true;
+        }
+    return false;
+}

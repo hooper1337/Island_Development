@@ -6,6 +6,7 @@
 #define TP_POO1_JOGO_H
 #include "Ilha.h"
 class Jogo{
+    string nomeJogo;
     Ilha *i;
     int dias;
     double dinheiro;
@@ -17,6 +18,8 @@ class Jogo{
     int eletricidade;
 public:
     Ilha* getIlha() const{return i;}
+    void setNomeJogo(string nome){nomeJogo = nome;}
+    string getNomeJogo() const{return nomeJogo;}
     float getQuantidadeFerro() const{return ferro;}
     int getQuantidadeBarraDeAco() const{return barraDeAco;}
     int getQuantidadeCarvao() const{return carvao;}
@@ -26,7 +29,7 @@ public:
     int getQuantidadeVigasDeMadeira() const{return vigasDeMadeira;}
     int getQuantidadeEletricidade() const{return eletricidade;}
     Jogo(Ilha *aux,int di=500, int d=1, int f=100, int b=100, int c=100, int m=100, int v=100, int el=100):i(aux),dinheiro(di), dias(d),ferro(f), barraDeAco(b), carvao(c), madeira(m), vigasDeMadeira(v), eletricidade(el){}
-    Jogo(const Jogo &aux, Ilha &ilha);
+    Jogo(const Jogo &aux, Ilha *aux1);
     int vendeRecursos(string tipo, int quanto);
     void vendeEdificio(int l, int c);
     int constroiEdificio(string ed, int l, int c);
@@ -40,6 +43,13 @@ public:
     void amanhecer();
     void anoitecer();
     void incrementaDias(){dias++;}
+};
+
+class SaveLoad{
+    vector<Jogo*> jogosGuardados;
+public:
+    void adicionaJogo(Jogo* aux);
+    bool removeJogo(string nome);
 };
 
 

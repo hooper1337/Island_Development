@@ -13,9 +13,9 @@ void mostraComandos();
 void mostraIlha(Jogo &jogo);
 void list(Jogo &jogo, int l, int c);
 bool verificaLinhaColuna(Jogo &jogo, int l, int c);
-void validaComando(Jogo &jogo, istringstream &recebe);
+void validaComando(Jogo &jogo,SaveLoad &jogos, istringstream &recebe);
 void mostraRecursos(Jogo &jogo);
-bool leFicheiro(Jogo &jogo, string ficheiro);
+bool leFicheiro(Jogo &jogo, SaveLoad &jogos, string ficheiro);
 
 
 #endif //TP_POO1_INTERFACE_H

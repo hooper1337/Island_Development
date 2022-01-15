@@ -58,6 +58,7 @@ void menuJogo(){
 
     Ilha ilha(linhas,colunas);
     Jogo jogo(&ilha);
+    SaveLoad jogos;
     mostraIlha(jogo);
 
     cout << "\nIntroduza <comandos> para ajuda!\n";
@@ -66,7 +67,7 @@ void menuJogo(){
         getline(cin,comando);
         istringstream iss(comando);
 
-        validaComando(jogo, iss);
+        validaComando(jogo,jogos, iss);
 
     }while(comando != "sair");
 }
@@ -218,7 +219,7 @@ bool verificaLinhaColuna(Jogo &jogo, int l, int c)
         return false;
 }
 
-void validaComando(Jogo &jogo, istringstream &recebe)
+void validaComando(Jogo &jogo, SaveLoad &jogos, istringstream &recebe)
 {
     string tipo;
     int linha;
@@ -255,7 +256,7 @@ void validaComando(Jogo &jogo, istringstream &recebe)
     else if(com == "exec")
     {
         recebe >> ficheiro;
-        if(leFicheiro(jogo, ficheiro))
+        if(leFicheiro(jogo, jogos, ficheiro))
             cout << "\nFicheiro lido com sucesso!\n";
         else
             cout << "\nErro ao abrir ficheiro!\n";
@@ -420,13 +421,26 @@ void validaComando(Jogo &jogo, istringstream &recebe)
         jogo.incrementaDias();
         jogo.amanhecer();
     }
+    else if(com == "save")
+    {
+        recebe >> nomeJogo;
+        if(recebe.fail())
+            cout << "\nO nome do jogo não podem ser apenas números!\n";
+        else
+        {
+            jogo.setNomeJogo(nomeJogo);
+            Jogo* game=new Jogo(jogo, jogo.getIlha());
+            jogos.adicionaJogo(game);
+            mostraIlha(*game);
+        }
+    }
     else if(com == "sair")
         cout << "\nA sair do jogo atual!\n";
     else
         cout << "\nComando inválido!\n";
 }
 
-bool leFicheiro(Jogo &jogo, string ficheiro){
+bool leFicheiro(Jogo &jogo, SaveLoad &jogos, string ficheiro){
     ifstream readData;
     string aux;
 
@@ -438,7 +452,7 @@ bool leFicheiro(Jogo &jogo, string ficheiro){
     while(getline(readData, aux))
     {
         istringstream recebe(aux);
-        validaComando(jogo, recebe);
+        validaComando(jogo,jogos, recebe);
     }
     readData.close();
     return true;

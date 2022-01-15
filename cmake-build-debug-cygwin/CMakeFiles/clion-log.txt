@@ -1,0 +1,4 @@
+"C:\Users\Hugo Ferreira\AppData\Local\JetBrains\CLion2021.3\cygwin_cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/cygdrive/c/Users/Hugo Ferreira/Desktop/Island_Development"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /cygdrive/c/Users/Hugo Ferreira/Desktop/Island_Development/cmake-build-debug-cygwin
