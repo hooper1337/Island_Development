@@ -1061,11 +1061,19 @@ void SaveLoad::adicionaJogo(Jogo *aux)
     jogosGuardados.push_back(aux);
 }
 
-bool SaveLoad::removeJogo(string nome)
+void SaveLoad::removeJogo(string nome)
 {
     for(int i=0; i<jogosGuardados.size(); i++)
         if(jogosGuardados[i]->getNomeJogo() == nome){
             jogosGuardados.erase(jogosGuardados.begin()+i);
+        }
+}
+
+bool SaveLoad::encontraJogo(string nome) {
+    for(int i=0; i<jogosGuardados.size(); i++)
+        if(jogosGuardados[i]->getNomeJogo() == nome)
+        {
+            removeJogo(nome);
             return true;
         }
     return false;

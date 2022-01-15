@@ -431,8 +431,16 @@ void validaComando(Jogo &jogo, SaveLoad &jogos, istringstream &recebe)
             jogo.setNomeJogo(nomeJogo);
             Jogo* game=new Jogo(jogo, jogo.getIlha());
             jogos.adicionaJogo(game);
-            mostraIlha(*game);
+            cout << "\nSnapshot guardado com sucesso!\n";
         }
+    }
+    else if(com == "apagar")
+    {
+        recebe >> nomeJogo;
+        if(jogos.encontraJogo(nomeJogo))
+            cout << "\nSnapshot eliminado com sucesso!\n";
+        else
+            cout << "\nO jogo que pretende eliminar não existe!\n";
     }
     else if(com == "sair")
         cout << "\nA sair do jogo atual!\n";

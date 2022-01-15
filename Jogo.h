@@ -49,7 +49,8 @@ class SaveLoad{
     vector<Jogo*> jogosGuardados;
 public:
     void adicionaJogo(Jogo* aux);
-    bool removeJogo(string nome);
+    void removeJogo(string nome);
+    bool encontraJogo(string nome);
 };
 
 
