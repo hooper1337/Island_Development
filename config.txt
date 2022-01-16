@@ -1,0 +1,9 @@
+minaf 150
+minac 150
+central 30
+bat 20
+fund 20
+serr 30
+oper 30
+miner 30
+len 30

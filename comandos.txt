@@ -1,0 +1,12 @@
+cons fund 1 1
+liga 1 1 
+cont oper
+move 1.1 1 1
+cons minaf 1 2
+liga 1 2
+cont miner 
+move 2.1 1 2
+cons minac 1 0 
+liga 1 0
+cont miner 
+move 3.1 1 0
