@@ -6,16 +6,21 @@
 #define TP_POO1_INTERFACE_H
 #include "Ilha.h"
 #include "Jogo.h"
+#include "utils.h"
+class Interface{
+public:
+    static void comecaInterface();
+    static void menuJogo();
+    static void mostraComandos();
+    static void mostraIlha(Jogo &jogo);
+    static void list(Jogo &jogo, int l, int c);
+    static bool verificaLinhaColuna(Jogo &jogo, int l, int c);
+    static void validaComando(Jogo &jogo,SaveLoad &jogos, istringstream &recebe);
+    static void mostraRecursos(Jogo &jogo);
+    static bool leFicheiro(Jogo &jogo, SaveLoad &jogos, string ficheiro);
+    static bool config(Jogo &jogo, string ficheiro);
+};
 
-void comecaInterface();
-void menuJogo();
-void mostraComandos();
-void mostraIlha(Jogo &jogo);
-void list(Jogo &jogo, int l, int c);
-bool verificaLinhaColuna(Jogo &jogo, int l, int c);
-void validaComando(Jogo &jogo,SaveLoad &jogos, istringstream &recebe);
-void mostraRecursos(Jogo &jogo);
-bool leFicheiro(Jogo &jogo, SaveLoad &jogos, string ficheiro);
 
 
 #endif //TP_POO1_INTERFACE_H

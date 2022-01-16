@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include <random>
+#include <cstdlib>
 using namespace std;
 
 #endif //TP_POO1_UTILS_H

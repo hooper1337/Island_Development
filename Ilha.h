@@ -14,14 +14,35 @@ private:
    int LINHAS;
    int COLUNAS;
    int totalTrabalhadores;
+   int precoMNF;
+   int precoMNC;
+   int precoCEN;
+   int precoBAT;
+   int precoFUN;
+   int precoSER;
+   int precoOPER;
+   int precoLEN;
+   int precoMINER;
 public:
     Zona**getIlha() const{return ilha;}
+    int getPrecoOPER() const{return precoOPER;}
+    int getPrecoLEN() const{return precoLEN;}
+    int getPrecoMINER() const{return precoMINER;}
     int getLinhas() const{return LINHAS;}
     int getColunas() const{return COLUNAS;}
     int getTotalTrabalhadores() const{return totalTrabalhadores;}
+    int getPrecoMNF() const{return precoMNF;}
+    int getPrecoMNC() const{return precoMNC;}
+    int getPrecoCEN() const{return precoCEN;}
+    int getPrecoBAT() const{return precoBAT;}
+    int getPrecoFUN() const{return precoFUN;}
+    int getPrecoSER() const{return precoSER;}
+    void setPreco(istringstream &recebe);
+    void setPrecoTraba(istringstream &recebe);
     Ilha(int l=0, int c=0);
+    Ilha(const Ilha& aux);
     ~Ilha(){delete[]ilha;}
-    bool procuraZona(string ed, int l, int c);
+    int procuraZona(string ed, int l, int c);
     bool procuraPasto(string traba, int d);
     int moveTrabalhador(string id, int l, int c);
     void retiraTotalTrabalhadores(int conta){totalTrabalhadores = totalTrabalhadores - conta;}

@@ -25,6 +25,7 @@ public:
     virtual ~Trabalhador()=default;
     void naoPodeMover(){controla = 1;}
     void podeMover(){controla = 0;}
+    virtual Trabalhador* duplica() const=0;
     void incrementaDias();
     void aumentaProbabilidade();
     bool irEmbora();
@@ -33,16 +34,19 @@ public:
 class Mineiro : public Trabalhador{
 public:
     Mineiro(string tipo, string id, int p, int pro) : Trabalhador(tipo,id,p,pro){};
+    Trabalhador *duplica() const override { return new Mineiro(*this);}
 };
 
 class Operario : public Trabalhador{
 public:
     Operario(string tipo, string id, int p, int pro) : Trabalhador(tipo,id,p,pro){};
+    Trabalhador *duplica() const override { return new Operario(*this);}
 };
 
 class Lenhador : public Trabalhador{
 public:
     Lenhador(string tipo, string id, int p, int pro) : Trabalhador(tipo,id,p,pro){};
+    Trabalhador *duplica() const override { return new Lenhador(*this);}
 };
 
 

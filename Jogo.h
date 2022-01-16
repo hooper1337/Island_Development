@@ -28,8 +28,22 @@ public:
     double getDinheiro() const {return dinheiro;}
     int getQuantidadeVigasDeMadeira() const{return vigasDeMadeira;}
     int getQuantidadeEletricidade() const{return eletricidade;}
-    Jogo(Ilha *aux,int di=500, int d=1, int f=100, int b=100, int c=100, int m=100, int v=100, int el=100):i(aux),dinheiro(di), dias(d),ferro(f), barraDeAco(b), carvao(c), madeira(m), vigasDeMadeira(v), eletricidade(el){}
-    Jogo(const Jogo &aux, Ilha *aux1);
+    Jogo(Ilha *aux,int di=400, int d=1, int f=0, int b=0, int c=0, int m=0, int v=0, int el=10):i(aux),dinheiro(di), dias(d),ferro(f), barraDeAco(b), carvao(c), madeira(m), vigasDeMadeira(v), eletricidade(el){}
+    Jogo(const Jogo &aux);
+    Jogo& operator=(const Jogo& aux)
+    {
+        nomeJogo = aux.nomeJogo;
+        i = aux.i;
+        dias = aux.dias;
+        dinheiro = aux.dinheiro;
+        ferro = aux.ferro;
+        barraDeAco = aux.barraDeAco;
+        carvao = aux.carvao;
+        madeira = aux.madeira;
+        vigasDeMadeira = aux.vigasDeMadeira;
+        eletricidade = aux.eletricidade;
+        return *this;
+    }
     int vendeRecursos(string tipo, int quanto);
     void vendeEdificio(int l, int c);
     int constroiEdificio(string ed, int l, int c);
@@ -48,9 +62,9 @@ public:
 class SaveLoad{
     vector<Jogo*> jogosGuardados;
 public:
-    void adicionaJogo(Jogo* aux);
-    void removeJogo(string nome);
-    bool encontraJogo(string nome);
+    void saveJogo(Jogo* aux);
+    bool removeJogo(string nome);
+    Jogo* encontraJogo(string nome);
 };
 
 

@@ -103,157 +103,234 @@ void Jogo::vendeEdificio(int l, int c) {
 }
 
 int Jogo::constroiEdificio(string ed, int l, int c) {
-        if(ed == "minaf" || ed == "minac")
+    if(i->procuraZona(ed,l,c) == 1)
+    {
+        if (ed == "minaf")
         {
-                if(vigasDeMadeira >= 10)
-                {
-                    if(i->procuraZona(ed,l,c))
-                    {
-                        vigasDeMadeira = vigasDeMadeira - 10;
-                        return 1;
-                    }
-                    else
-                        return -1;
-                }
-                else if(vigasDeMadeira >= 20 && i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
-                {
-                    if(i->procuraZona(ed,l,c))
-                    {
-                        vigasDeMadeira = vigasDeMadeira - 20;
-                        return 1;
-                    }
-                    else
-                        return -1;
-                }
-                else if(dinheiro >= 200 && i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
-                {
-                    if(i->procuraZona(ed,l,c))
-                    {
-                        dinheiro = dinheiro - 200;
-                        return 1;
-                    }
-                    else
-                        return -1;
-                }
-                else if(dinheiro >= 100 && i->getIlha()[l][c].getTipoZona()->getTipo() != "flr")
-                {
-                    if(i->procuraZona(ed,l,c))
-                    {
-                        dinheiro = dinheiro - 100;
-                        return 1;
-                    }
-                    else
-                        return -1;
-                }
-                else
-                    return 0;
-        }
-        else if(ed == "central")
-        {
-            if(dinheiro >= 15 && i->getIlha()[l][c].getTipoZona()->getTipo() != "flr")
+            if(i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
             {
-                if(i->procuraZona(ed,l,c))
+                if(vigasDeMadeira >= 20)
                 {
-                    dinheiro = dinheiro - 15;
-                    return 1;
-                }
-                else
-                    return -1;
-            }
-            else if(dinheiro >= 30 && i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
-            {
-                if(i->procuraZona(ed,l,c))
-                {
-                    dinheiro = dinheiro - 30;
-                    return 1;
-                }
-                else
-                    return -1;
-            }
-            else
-                return 0;
-        }
-        else if(ed == "bat")
-        {
-            if(vigasDeMadeira >= 10 && dinheiro >= 10 && i->getIlha()[l][c].getTipoZona()->getTipo() != "flr")
-            {
-                if(i->procuraZona(ed,l,c))
-                {
-                    dinheiro = dinheiro - 10;
-                    vigasDeMadeira = vigasDeMadeira - 10;
-                    return 1;
-                }
-                else
-                    return -1;
-            }
-            else if(vigasDeMadeira >= 20 && dinheiro >= 20 && i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
-            {
-                if(i->procuraZona(ed,l,c))
-                {
-                    dinheiro = dinheiro - 20;
                     vigasDeMadeira = vigasDeMadeira - 20;
                     return 1;
                 }
+                else if(dinheiro >= 2*i->getPrecoMNF())
+                {
+                    dinheiro = dinheiro - 2*i->getPrecoMNF();
+                    return 1;
+                }
                 else
-                    return -1;
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
             }
             else
-                return 0;
+            {
+                if(vigasDeMadeira >= 10)
+                {
+                    vigasDeMadeira = vigasDeMadeira - 10;
+                    return 1;
+                }
+                else if(dinheiro >= i->getPrecoMNF())
+                {
+                    dinheiro = dinheiro - i->getPrecoMNF();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
+
         }
-        else if(ed == "fund")
+        if (ed == "minac")
         {
-            if(dinheiro >= 10 && i->getIlha()[l][c].getTipoZona()->getTipo() != "flr")
-               {
-                   if(i->procuraZona(ed,l,c))
-                   {
-                        dinheiro = dinheiro - 10;
+            if(i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
+            {
+                if(vigasDeMadeira >= 20)
+                {
+                    vigasDeMadeira = vigasDeMadeira - 20;
+                    return 1;
+                }
+                else if(dinheiro >= 2*i->getPrecoMNC())
+                {
+                    dinheiro = dinheiro - 2*i->getPrecoMNC();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
+            else
+            {
+                if(vigasDeMadeira >= 10)
+                {
+                    vigasDeMadeira = vigasDeMadeira - 10;
+                    return 1;
+                }
+                else if(dinheiro >= i->getPrecoMNC())
+                {
+                    dinheiro = dinheiro - i->getPrecoMNC();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
+
+        }
+
+        else if (ed == "central")
+        {
+            if(i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
+            {
+                if(dinheiro >= 2*i->getPrecoCEN())
+                {
+                    dinheiro = dinheiro - 2*i->getPrecoCEN();
+                    return 1;
+                }
+                else
+                {
+                    if(dinheiro >= i->getPrecoCEN())
+                    {
+                        dinheiro = dinheiro - i->getPrecoCEN();
                         return 1;
-                   }
-                   else
-                       return -1;
-               }
-            else if(dinheiro >= 20 && i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
-            {
-                if(i->procuraZona(ed,l,c))
-                {
-                    dinheiro = dinheiro - 20;
-                    return 1;
+                    }
+                    else
+                    {
+                        i->getIlha()[l][c].libertaEdificio();
+                        return 0;
+                    }
                 }
-                else
-                    return -1;
             }
-            else
-                return 0;
         }
-        else if(ed == "serr")
+        else if (ed == "fund")
         {
-            if(dinheiro > 50)
+            if(i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
             {
-                if(i->procuraZona(ed,l,c))
+                if(dinheiro >= 2*i->getPrecoFUN())
                 {
-                    dinheiro = dinheiro - 50;
+                    dinheiro = dinheiro - 2*i->getPrecoFUN();
                     return 1;
                 }
                 else
-                    return -1;
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
             }
             else
-                return 0;
+            {
+                if(dinheiro >= i->getPrecoFUN())
+                {
+                    dinheiro = dinheiro - i->getPrecoFUN();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
         }
-        else
-            return -2;
+        else if (ed == "bat")
+        {
+            if(i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
+            {
+                if(vigasDeMadeira >= 20 && dinheiro >= 2*i->getPrecoBAT())
+                {
+                    vigasDeMadeira = vigasDeMadeira - 20;
+                    dinheiro = dinheiro - 2*i->getPrecoBAT();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
+            else
+            {
+                if(vigasDeMadeira >= 10 && dinheiro >= i->getPrecoBAT())
+                {
+                    vigasDeMadeira = vigasDeMadeira - 10;
+                    dinheiro = dinheiro - i->getPrecoBAT();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
+        }
+        else if (ed == "serr")
+        {
+            if(i->getIlha()[l][c].getTipoZona()->getTipo() == "flr")
+            {
+                if(dinheiro >= 2*i->getPrecoSER())
+                {
+                    dinheiro = dinheiro - 2*i->getPrecoSER();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
+            else
+            {
+                if(dinheiro >= i->getPrecoSER())
+                {
+                    dinheiro = dinheiro - i->getPrecoSER();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
+        }
+
+    }
+    else if(i->procuraZona(ed,l,c) == -6)
+        return -2;
+    else
+        return -50;
+    return 1000;
 }
 
 int Jogo::contrataTrabalhador(string t) {
-    if(t == "oper" || t == "miner")
+    if(t == "oper" )
     {
-        if(dinheiro >= 15)
+        if(dinheiro >= i->getPrecoOPER())
         {
                 if(i->procuraPasto(t,dias))
                 {
-                dinheiro = dinheiro - 15;
+                dinheiro = dinheiro - i->getPrecoOPER();
                 return 1;
                 }
+        }
+        else
+            return 0;
+    }
+    else if(t == "miner" )
+    {
+        if(dinheiro >= i->getPrecoMINER())
+        {
+            if(i->procuraPasto(t,dias))
+            {
+                dinheiro = dinheiro - i->getPrecoMINER();
+                return 1;
+            }
         }
         else
             return 0;
@@ -261,11 +338,11 @@ int Jogo::contrataTrabalhador(string t) {
     else if(t == "len")
     {
 
-        if(dinheiro >= 20)
+        if(dinheiro >= i->getPrecoLEN())
         {
                 if(i->procuraPasto(t,dias))
                 {
-                dinheiro = dinheiro - 20;
+                dinheiro = dinheiro - i->getPrecoLEN();
                 return 1;
                 }
         }
@@ -1044,37 +1121,40 @@ void Jogo::anoitecer()
                     i->getIlha()[o][m].libertaEdificio();
 }
 
-Jogo::Jogo(const Jogo &aux, Ilha *aux1): i(aux1) {
-    this->nomeJogo = aux.nomeJogo;
-    this->dias = aux.dias;
-    this->dinheiro = aux.dinheiro;
-    this->ferro = aux.ferro;
-    this->barraDeAco = aux.barraDeAco;
-    this->carvao = aux.carvao;
-    this->madeira = aux.madeira;
-    this->vigasDeMadeira = aux.vigasDeMadeira;
-    this->eletricidade = aux.eletricidade;
+Jogo::Jogo(const Jogo &aux)
+{
+    *this = aux;
 }
 
-void SaveLoad::adicionaJogo(Jogo *aux)
+void SaveLoad::saveJogo(Jogo* aux)
 {
     jogosGuardados.push_back(aux);
 }
 
-void SaveLoad::removeJogo(string nome)
+bool SaveLoad::removeJogo(string nome)
 {
-    for(int i=0; i<jogosGuardados.size(); i++)
-        if(jogosGuardados[i]->getNomeJogo() == nome){
-            jogosGuardados.erase(jogosGuardados.begin()+i);
-        }
+    Jogo* recebe = encontraJogo(nome);
+    if(recebe != nullptr)
+    {
+        for(int i=0; i<jogosGuardados.size(); i++)
+            if(recebe->getNomeJogo() == nome)
+            {
+                jogosGuardados.erase(jogosGuardados.begin()+i);
+                return true;
+            }
+    }
+    return false;
 }
 
-bool SaveLoad::encontraJogo(string nome) {
+Jogo* SaveLoad::encontraJogo(string nome)
+{
     for(int i=0; i<jogosGuardados.size(); i++)
         if(jogosGuardados[i]->getNomeJogo() == nome)
         {
-            removeJogo(nome);
-            return true;
+            return jogosGuardados[i];
         }
-    return false;
+    return nullptr;
 }
+
+
+

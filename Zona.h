@@ -20,6 +20,30 @@ public:
     Edificio* getEdificio() const{return e;}
     int getTotalTrabalhadores() const{return totalTrabalhadores;}
     Zona();
+    Zona(const Zona& aux);
+    Zona& operator=(const Zona& aux)
+    {
+        if(this == &aux) return *this;
+        delete tp;
+        tp = nullptr;
+        delete e;
+        e = nullptr;
+
+        auto it = trabalhadores.begin();
+        while(it != trabalhadores.end()){
+            delete *it;
+            ++it;
+        }
+        trabalhadores.clear();
+
+        tp = aux.tp->duplica();
+        e = aux.e->duplica();
+        for(int i=0; i<aux.trabalhadores.size(); i++)
+            trabalhadores[i] = aux.trabalhadores[i]->duplica();
+        totalTrabalhadores = aux.totalTrabalhadores;
+        return *this;
+    }
+
     ~Zona(){for(int i=0;i<trabalhadores.size();i++) delete trabalhadores[i]; delete e;}
     bool alocaTrabalhador(string traba, string id);
     bool alocaEdificio(string ed);
@@ -39,7 +63,7 @@ public:
     void libertaEdificio();
     void limpaTrabalhadores();
     void podemMover();
-    void incrementaDiasContrato();
+    Zona* duplicaZona(){return new Zona(*this);}
 };
 
 

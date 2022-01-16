@@ -4,7 +4,7 @@
 #include "Interface.h"
 
 
-void comecaInterface(){
+void Interface::comecaInterface(){
     string opcao;
     cout << R"(
 ██████╗ ███████╗███╗   ███╗    ██╗   ██╗██╗███╗   ██╗██████╗  ██████╗
@@ -33,7 +33,7 @@ void comecaInterface(){
             cout << "\nIntroduza uma opção válida!\n";
     }while(opcao != "3");
 }
-void menuJogo(){
+void Interface::menuJogo(){
     int linhas=0;
     int colunas=0;
     string aux;
@@ -72,7 +72,7 @@ void menuJogo(){
     }while(comando != "sair");
 }
 
-void mostraComandos(){
+void Interface::mostraComandos(){
     cout << R"(
 ██████╗ ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗██████╗  ██████╗ ███████╗
 ██╔════╝██╔═══██╗████╗ ████║██╔══██╗████╗  ██║██╔══██╗██╔═══██╗██╔════╝
@@ -93,13 +93,13 @@ void mostraComandos(){
     cout << "list <linha> <coluna>\n";
     cout << "vende <linha> <coluna>\n";
     cout << "next\n";
-    cout << "save <nome> (em desenvolvimento)\n";
+    cout << "save <nome>\n";
     cout << "load <nome> (em desenvolvimento)\n";
-    cout << "apaga <nome> (em desenvolvimento)\n";
-    cout << "config <ficheiro> (em desenvolvimento)\n";
+    cout << "apaga <nome>\n";
+    cout << "config <ficheiro>\n";
 }
 
-void mostraIlha(Jogo &jogo){
+void Interface::mostraIlha(Jogo &jogo){
     cout << R"(
 ██╗██╗     ██╗  ██╗ █████╗
 ██║██║     ██║  ██║██╔══██╗
@@ -185,7 +185,7 @@ void mostraIlha(Jogo &jogo){
     cout <<"\n";
 }
 
-void list(Jogo &jogo, int l, int c)
+void Interface::list(Jogo &jogo, int l, int c)
 {
     cout  << "┌───────┐\n";
     cout << "│" << jogo.getNomeZona(l,c) << "\t│\n";
@@ -208,7 +208,7 @@ void list(Jogo &jogo, int l, int c)
     cout  << "└───────┘\n";
 }
 
-bool verificaLinhaColuna(Jogo &jogo, int l, int c)
+bool Interface::verificaLinhaColuna(Jogo &jogo, int l, int c)
 {
     int linhas = jogo.getIlha()->getLinhas();
     int colunas = jogo.getIlha()->getColunas();
@@ -219,9 +219,10 @@ bool verificaLinhaColuna(Jogo &jogo, int l, int c)
         return false;
 }
 
-void validaComando(Jogo &jogo, SaveLoad &jogos, istringstream &recebe)
+void Interface::validaComando(Jogo &jogo, SaveLoad &jogos, istringstream &recebe)
 {
     string tipo;
+
     int linha;
     int coluna;
     int quanto;
@@ -429,18 +430,34 @@ void validaComando(Jogo &jogo, SaveLoad &jogos, istringstream &recebe)
         else
         {
             jogo.setNomeJogo(nomeJogo);
-            Jogo* game=new Jogo(jogo, jogo.getIlha());
-            jogos.adicionaJogo(game);
+            Jogo* guardar = new Jogo(jogo);
+            jogos.saveJogo(guardar);
+            ///mostraIlha(*guardar); provar que o save esta a funcionar
             cout << "\nSnapshot guardado com sucesso!\n";
         }
     }
     else if(com == "apagar")
     {
         recebe >> nomeJogo;
-        if(jogos.encontraJogo(nomeJogo))
+        if(jogos.removeJogo(nomeJogo))
             cout << "\nSnapshot eliminado com sucesso!\n";
         else
             cout << "\nO jogo que pretende eliminar não existe!\n";
+    }
+    /*else if(com == "load")
+    {
+        recebe >> nomeJogo;
+        Jogo* guardado = jogos.encontraJogo(nomeJogo);
+        jogo.operator=(*guardado);
+    }*/
+    else if(com == "config")
+    {
+        recebe >> ficheiro;
+
+        if(config(jogo,ficheiro))
+            cout << "\nFicheiro configuração lido com sucesso!\n";
+        else
+            cout << "\nErro ao abrir ficheiro!\n";
     }
     else if(com == "sair")
         cout << "\nA sair do jogo atual!\n";
@@ -448,7 +465,8 @@ void validaComando(Jogo &jogo, SaveLoad &jogos, istringstream &recebe)
         cout << "\nComando inválido!\n";
 }
 
-bool leFicheiro(Jogo &jogo, SaveLoad &jogos, string ficheiro){
+bool Interface::leFicheiro(Jogo &jogo, SaveLoad &jogos, string ficheiro)
+{
     ifstream readData;
     string aux;
 
@@ -466,7 +484,34 @@ bool leFicheiro(Jogo &jogo, SaveLoad &jogos, string ficheiro){
     return true;
 }
 
-void mostraRecursos(Jogo &jogo)
+bool Interface::config(Jogo &jogo, string ficheiro)
+{
+    ifstream readData;
+    string aux;
+    int controla;
+    readData.open(ficheiro);
+
+    if(!readData)
+        return false;
+
+    while(getline(readData, aux))
+    {
+        if(controla < 6)
+        {
+            istringstream recebe(aux);
+            jogo.getIlha()->setPreco(recebe);
+            controla++;
+        }
+        else
+        {
+            istringstream recebe(aux);
+            jogo.getIlha()->setPrecoTraba(recebe);
+        }
+    }
+    return true;
+}
+
+void Interface::mostraRecursos(Jogo &jogo)
 {
     cout << endl;
     cout << "Recursos: \n";

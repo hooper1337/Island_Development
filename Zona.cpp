@@ -224,6 +224,11 @@ bool Zona::despedeTrabalhador() {
     return false;
 }
 
+Zona::Zona(const Zona &aux)
+{
+    *this = aux;
+}
+
 
 
 
