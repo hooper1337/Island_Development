@@ -28,7 +28,7 @@ public:
     void duplicaProdutividade(){produtividade = produtividade*2;}
     void aumentaArmazenamento();
     void diminuiArmazenamento();
-    bool desabar();
+    bool desabar() const;
 };
 
 class MinaFerro : public Edificio {

@@ -68,7 +68,6 @@ int Ilha::procuraZona(string ed, int l, int c)
     }
     else
         return -4;
-    return -50;
 }
 
 bool Ilha::procuraPasto(string traba, int d)

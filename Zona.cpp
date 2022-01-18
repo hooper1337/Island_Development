@@ -192,8 +192,6 @@ bool Zona::encontraMineiro() {
     for(int i=0; i<trabalhadores.size();  i++)
         if(trabalhadores[i]->getTipo() == "M")
             return true;
-        else
-            return false;
     return false;
 }
 
@@ -202,8 +200,6 @@ bool Zona::encontraOperario() {
     {
         if(trabalhadores[i]->getTipo() == "O")
             return true;
-        else
-            return false;
     }
     return false;
 }

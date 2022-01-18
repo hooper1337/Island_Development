@@ -97,7 +97,8 @@ void Edificio::diminuiArmazenamento() {
     armazenamento = armazenamento - produtividade;
 }
 
-bool Edificio::desabar() {
+
+bool Edificio::desabar() const{
     if((rand() % 100)<probabilidade) {
         return true;
     }
