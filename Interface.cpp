@@ -88,7 +88,7 @@ void Interface::mostraComandos(){
     cout << "des <linha> <coluna>\n";
     cout << "levup <linha> <coluna>\n";
     cout << "move <id> <linha> <coluna>\n";
-    cout << "vende <tipo> <quanto>\n";
+    cout << "venderec <tipo> <quanto>\n";
     cout << "cont <tipo>\n";
     cout << "list <linha> <coluna>\n";
     cout << "vende <linha> <coluna>\n";

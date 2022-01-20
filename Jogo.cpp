@@ -79,29 +79,37 @@ int Jogo::vendeRecursos(string tipo, int quanto) {
 
 void Jogo::vendeEdificio(int l, int c) {
     string aux = i->getIlha()[l][c].getEdificio()->getTipo();
-    if(aux == "mnF" || aux == "mnC")
+    if(aux == "mnF")
     {
         i->getIlha()[l][c].libertaEdificio();
-        dinheiro = dinheiro + 100;
+        dinheiro = dinheiro + i->getPrecoMNF();
+    }
+    else if(aux == "mnC")
+    {
+        i->getIlha()[l][c].libertaEdificio();
+        dinheiro = dinheiro + i->getPrecoMNC();
     }
     else if(aux == "elec")
     {
         i->getIlha()[l][c].libertaEdificio();
-        dinheiro = dinheiro + 15;
+        dinheiro = dinheiro + i->getPrecoCEN();
     }
-    else if(aux == "bat" || aux == "fun")
+    else if(aux == "bat")
     {
         i->getIlha()[l][c].libertaEdificio();
-        dinheiro = dinheiro + 10;
+        dinheiro = dinheiro + i->getPrecoBAT();
+    }
+    else if(aux == "fun")
+    {
+        i->getIlha()[l][c].libertaEdificio();
+        dinheiro = dinheiro + i->getPrecoFUN();
     }
     else if(aux == "ser")
     {
         i->getIlha()[l][c].libertaEdificio();
-        dinheiro = dinheiro + 50;
+        dinheiro = dinheiro + i->getPrecoSER();
     }
-
 }
-
 int Jogo::constroiEdificio(string ed, int l, int c) {
     if(i->procuraZona(ed,l,c) == 1)
     {

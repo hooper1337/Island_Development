@@ -28,7 +28,7 @@ public:
     double getDinheiro() const {return dinheiro;}
     int getQuantidadeVigasDeMadeira() const{return vigasDeMadeira;}
     int getQuantidadeEletricidade() const{return eletricidade;}
-    Jogo(Ilha *aux,int di=400, int d=1, int f=0, int b=0, int c=0, int m=0, int v=0, int el=10):i(aux),dinheiro(di), dias(d),ferro(f), barraDeAco(b), carvao(c), madeira(m), vigasDeMadeira(v), eletricidade(el){}
+    Jogo(Ilha *aux,int di=400, int d=1, int f=0, int b=0, int c=0, int m=0, int v=0, int el=0):i(aux),dinheiro(di), dias(d),ferro(f), barraDeAco(b), carvao(c), madeira(m), vigasDeMadeira(v), eletricidade(el){}
     Jogo(const Jogo &aux);
     Jogo& operator=(const Jogo& aux)
     {
