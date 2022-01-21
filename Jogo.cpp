@@ -205,16 +205,21 @@ int Jogo::constroiEdificio(string ed, int l, int c) {
                 }
                 else
                 {
-                    if(dinheiro >= i->getPrecoCEN())
-                    {
-                        dinheiro = dinheiro - i->getPrecoCEN();
-                        return 1;
-                    }
-                    else
-                    {
-                        i->getIlha()[l][c].libertaEdificio();
-                        return 0;
-                    }
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
+                }
+            }
+            else
+            {
+                if(dinheiro >= i->getPrecoCEN())
+                {
+                    dinheiro = dinheiro - i->getPrecoCEN();
+                    return 1;
+                }
+                else
+                {
+                    i->getIlha()[l][c].libertaEdificio();
+                    return 0;
                 }
             }
         }
